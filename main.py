@@ -1,5 +1,5 @@
 """
-Punto de entrada del Mini IDE 'Synthetix Studio'.
+Punto de entrada de CACHAPA, el Mini IDE del proyecto Synthetix Studio.
 Consola de línea de comandos: lee comandos y los despacha (Command Pattern).
 
 Uso: python main.py [ruta_config]   (por defecto: config.json)
@@ -14,7 +14,7 @@ def main():
     config_path = sys.argv[1] if len(sys.argv) > 1 else "config.json"
 
     ide = SynthetixIDE()
-    print("Synthetix Studio - Mini IDE. Escriba 'help' para ver los comandos.")
+    print("CACHAPA - Mini IDE (Synthetix Studio). Escriba 'help' para ver los comandos.")
 
     # La configuración externa se lee obligatoriamente al iniciar.
     ide.dispatch(f"config {config_path}")
@@ -24,7 +24,7 @@ def main():
 
     while True:
         try:
-            line = input("synthetix> ")
+            line = input("cachapa> ")
         except (EOFError, KeyboardInterrupt):
             print()
             break

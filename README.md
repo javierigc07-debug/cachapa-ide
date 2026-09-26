@@ -1,4 +1,6 @@
-# Synthetix Studio — Mini IDE
+# CACHAPA — Mini IDE (Proyecto Synthetix Studio)
+
+**C**onsola de **A**nálisis, **C**omandos, **H**istorial, **A**lgoritmos, **P**ilas y **A**PI.
 
 Proyecto de Algoritmos y Estructuras de Datos II (UJAP, septiembre 2026).
 
@@ -73,16 +75,16 @@ complejidad a partir de los bucles del código.
 Ejemplo de sesión:
 
 ```text
-synthetix> new utils.py
+cachapa> new utils.py
 Escriba el contenido (termine con una línea ':fin'):
 def foo():
     for i in range(10):
         if (i > 5:
             print(i)
 :fin
-synthetix> check
+cachapa> check
 Error: símbolo '(' abierto en línea 3, columna 12 nunca fue cerrado.
-synthetix> sort severity mergesort
+cachapa> sort severity mergesort
 ```
 
 ## Arquitectura
