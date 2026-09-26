@@ -39,6 +39,8 @@ export SYNTHETIX_API_KEY="sk-or-..."
 Sin clave, `analyze` funciona en modo local: da una estimación básica de la
 complejidad a partir de los bucles del código.
 
+Para probar todos los módulos paso a paso, ver [PRUEBA.md](PRUEBA.md).
+
 ## Archivo de configuración (`config.json`)
 
 ```json
