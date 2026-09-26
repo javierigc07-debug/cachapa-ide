@@ -5,12 +5,16 @@ Consola de línea de comandos: lee comandos y los despacha (Command Pattern).
 Uso: python main.py [ruta_config]   (por defecto: config.json)
 """
 
+import os
 import sys
 
 from ide import SynthetixIDE
 
 
 def main():
+    # Trabajar siempre desde la carpeta del proyecto, aunque se ejecute con
+    # doble clic o con el botón Run del editor desde otra carpeta.
+    os.chdir(os.path.dirname(os.path.abspath(__file__)))
     config_path = sys.argv[1] if len(sys.argv) > 1 else "config.json"
 
     ide = SynthetixIDE()
