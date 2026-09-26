@@ -1,0 +1,11 @@
+{
+  "backup_dir": "./backups",
+  "log_dir": "./logs",
+  "api": {
+    "base_url": "https://openrouter.ai/api/v1",
+    "endpoint": "/chat/completions",
+    "model": "google/gemini-2.5-flash",
+    "api_key_env": "SYNTHETIX_API_KEY",
+    "timeout_s": 30
+  }
+}
