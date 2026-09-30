@@ -224,9 +224,7 @@ class AnalyzeCommand(Command):
             if r is None:
                 continue
             processed_req, response = r
-            print(f"\nResultado de {processed_req}:")
-            print(f"  Fuente: {response['source']}")
-            print(f"  {response['result']}")
+            print(f"\n{response['result']}")
 
 
 class HelpCommand(Command):
