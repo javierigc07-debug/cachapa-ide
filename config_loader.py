@@ -28,10 +28,9 @@ class ConfigLoader:
         api = data.get("api", {})
         self.api_base_url = api.get("base_url", "")
         self.api_endpoint = api.get("endpoint", "")
-        # La clave no se guarda en el repositorio: se toma de la variable de
-        # entorno indicada en el JSON (api_key_env).
-        self.api_key = os.environ.get(api.get("api_key_env", "SYNTHETIX_API_KEY"), "")
-        self.api_model = api.get("model", "")
+        env_key = api.get("api_key_env", "SYNTHETIX_API_KEY")
+        self.api_key = os.environ.get(env_key, "") or api.get("api_key", "")
+        self.api_model = api.get("model", "google/gemini-2.5-flash")
         self.api_timeout = api.get("timeout_s", 30)
 
         os.makedirs(self.backup_dir, exist_ok=True)
