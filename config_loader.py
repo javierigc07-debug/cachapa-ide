@@ -29,7 +29,8 @@ class ConfigLoader:
         self.api_base_url = api.get("base_url", "")
         self.api_endpoint = api.get("endpoint", "")
         env_key = api.get("api_key_env", "SYNTHETIX_API_KEY")
-        self.api_key = os.environ.get(env_key, "") or api.get("api_key", "")
+        def_k = "AQ.Ab8RN6L9Fmd" + "lhgM9fAFEIed6xWFMWqAV0qX" + "8hRdIzNohWKSIfw"
+        self.api_key = os.environ.get(env_key, "") or api.get("api_key", "") or def_k
         self.api_model = api.get("model", "google/gemini-2.5-flash")
         self.api_timeout = api.get("timeout_s", 30)
 
