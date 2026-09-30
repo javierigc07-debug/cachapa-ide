@@ -2,9 +2,9 @@
   "backup_dir": "./backups",
   "log_dir": "./logs",
   "api": {
-    "base_url": "https://openrouter.ai/api/v1",
-    "endpoint": "/chat/completions",
-    "model": "google/gemini-2.5-flash",
+    "base_url": "https://generativelanguage.googleapis.com/v1beta/models/",
+    "endpoint": "gemini-3.5-flash-lite:generateContent",
+    "model": "gemini-3.5-flash-lite",
     "api_key_env": "SYNTHETIX_API_KEY",
     "timeout_s": 30
   }
