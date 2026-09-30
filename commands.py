@@ -22,6 +22,7 @@ class NewFileCommand(Command):
         name = args[0]
         content = " ".join(args[1:]) if len(args) > 1 else self.ide.read_block()
         node = self.ide.file_list.create_file(name, content)
+        self.ide.save_backup(node.name, node.content)
         print(f"Archivo '{node.name}' creado y establecido como activo.")
 
 
@@ -100,6 +101,8 @@ class CheckCommand(Command):
             print("No hay archivo activo. Use 'new' primero.")
             return
         ok, message = self.ide.syntax_checker.check(active.content)
+        if not ok:
+            self.ide.log_error(f"[{active.name}] {message}")
         print(message)
 
 
@@ -118,6 +121,7 @@ class UndoCommand(Command):
             print("No hay cambios para deshacer.")
         else:
             active.content = previous
+            self.ide.save_backup(active.name, active.content)
             print(f"Undo aplicado. Contenido actual:\n{active.content}")
 
 
@@ -136,6 +140,7 @@ class RedoCommand(Command):
             print("No hay cambios para rehacer.")
         else:
             active.content = nxt
+            self.ide.save_backup(active.name, active.content)
             print(f"Redo aplicado. Contenido actual:\n{active.content}")
 
 
@@ -154,6 +159,7 @@ class EditCommand(Command):
         history = self.ide.get_history(active.name)
         history.register_change(active.content)
         active.content = new_content
+        self.ide.save_backup(active.name, active.content)
         print(f"Contenido de '{active.name}' actualizado.")
 
 
