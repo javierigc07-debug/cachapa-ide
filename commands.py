@@ -217,16 +217,13 @@ class AnalyzeCommand(Command):
         if active is None:
             print("No hay archivo activo.")
             return
-        req = self.ide.request_buffer.enqueue_request(active.name, active.content)
-        print(f"Petición encolada: {req}. Procesando cola de forma secuencial...")
+        self.ide.request_buffer.enqueue_request(active.name, active.content)
         results = self.ide.request_buffer.process_all()
         for r in results:
             if r is None:
                 continue
             processed_req, response = r
-            print(f"\nResultado de {processed_req}:")
-            print(f"  Fuente: {response['source']}")
-            print(f"  {response['result']}")
+            print(f"\n{response['result']}")
 
 
 class HelpCommand(Command):
