@@ -43,6 +43,32 @@ class SynthetixIDE:
             self._histories[filename] = HistoryManager()
         return self._histories[filename]
 
+    def save_backup(self, filename: str, content: str):
+        """Guarda un respaldo físico del archivo si la configuración fue cargada."""
+        if not self.config.loaded or not self.config.backup_dir:
+            return
+        try:
+            import os
+            path = os.path.join(self.config.backup_dir, filename)
+            with open(path, "w", encoding="utf-8") as f:
+                f.write(content)
+        except Exception as e:
+            self.log_error(f"Error al crear respaldo de {filename}: {e}")
+
+    def log_error(self, message: str):
+        """Escribe un mensaje de error en el archivo de log configurado."""
+        if not self.config.loaded or not self.config.log_dir:
+            return
+        try:
+            import os
+            from datetime import datetime
+            path = os.path.join(self.config.log_dir, "syntax_errors.log")
+            timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            with open(path, "a", encoding="utf-8") as f:
+                f.write(f"[{timestamp}] {message}\n")
+        except Exception:
+            pass
+
     def ai_client_refresh(self):
         self.ai_client = AIClient(self.config)
         self.request_buffer = RequestBuffer(self.ai_client)
